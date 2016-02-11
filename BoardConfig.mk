@@ -3,10 +3,10 @@ DEVICE_FOLDER := device/blu/vivoxl
 # inherit from the proprietary version
 
 TARGET_NO_BOOTLOADER := true
-TARGET_BOOTLOADER_BOARD_NAME := mt6735_board
+TARGET_BOOTLOADER_BOARD_NAME := mt6753_board
 
 # Platform
-TARGET_BOARD_PLATFORM := mt6735
+TARGET_BOARD_PLATFORM := mt6753
 TARGET_BOARD_PLATFORM_GPU := mali-t720mp2
 
 # Flags
