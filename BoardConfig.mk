@@ -1,4 +1,4 @@
-DEVICE_FOLDER := device/mt6735/mt6735_board
+DEVICE_FOLDER := device/blu/vivoxl
 
 # inherit from the proprietary version
 
