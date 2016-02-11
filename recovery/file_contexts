@@ -120,6 +120,13 @@
 /dev/zero		u:object_r:zero_device:s0
 /dev/__kmsg__		u:object_r:klog_device:s0
 /dev/__properties__ u:object_r:properties_device:s0
+
+#Gionee BSP1 ningyd 20150303 modify for CR01452914 immersion vibrate begin
+/dev/tspdrv u:object_r:immvibed_device:s0
+/dev/pipes(/.*)?        u:object_r:pipe_device:s0
+/system/bin/immvibed u:object_r:immvibed_exec:s0
+#Gionee BSP1 ningyd 20150303 modify for CR01452914 immersion vibrate end
+
 #############################
 # System files
 #
@@ -254,13 +261,13 @@
 /mnt/asec/[^/]+/lib(/.*)?   u:object_r:asec_public_file:s0
 /data/app-asec(/.*)?        u:object_r:asec_image_file:s0
 #line 1 "device/mediatek/common/sepolicy/file_contexts"
-#
+# 
 #############################
 # Custom files
 /custom(/.*)?		u:object_r:custom_file:s0
 
 
-#############################
+##############################
 # Data files
 #
 /data/aee_exp(/.*)?  u:object_r:aee_exp_data_file:s0
@@ -283,7 +290,7 @@
 /data/misc/acdapi(/.*)? u:object_r:acdapi_data_file:s0
 /data/misc/akmd_set.txt u:object_r:akmd8963_access_file1:s0
 /data/misc/mblog(/.*)? u:object_r:logmisc_data_file:s0
-/data/misc/PDC.ini u:object_r:akmd8963_access_file2:s0
+/data/misc/pdc.txt u:object_r:akmd8963_access_file2:s0
 /data/misc/ppp(/.*)? u:object_r:ppp_data_file:s0
 /data/misc/radvd(/.*)? u:object_r:radvd_data_file:s0 
 /data/misc/sensor.log		u:object_r:bmm050_sensor_log_file:s0
@@ -323,6 +330,8 @@
 /dev/BU64745GWZAF(/.*)? u:object_r:BU64745GWZAF_device:s0
 /dev/cache(/.*)? u:object_r:cache_device:s0 
 /dev/CAM_CAL_DRV(/.*)? u:object_r:CAM_CAL_DRV_device:s0
+/dev/SUNNY_CAM_CAL_DRV(/.*)? u:object_r:SUNNY_CAM_CAL_DRV_device:s0
+/dev/OFILM_CAM_CAL_DRV(/.*)? u:object_r:OFILM_CAM_CAL_DRV_device:s0
 /dev/camera-fdvt(/.*)? u:object_r:camera_fdvt_device:s0
 /dev/camera-isp(/.*)? u:object_r:camera_isp_device:s0
 /dev/camera-pipemgr(/.*)? u:object_r:camera_pipemgr_device:s0
@@ -336,7 +345,6 @@
 /dev/AK7345AF(/.*)? u:object_r:AK7345AF_device:s0
 /dev/DW9714A(/.*)? u:object_r:DW9714A_device:s0
 /dev/DW9718AF(/.*)? u:object_r:DW9718AF_device:s0
-/dev/DW9718AF_SUNNY(/.*)? u:object_r:DW9718AF_SUNNY_device:s0
 /dev/ebc(/.*)? u:object_r:ebc_device:s0
 /dev/ebr[0-9]+ u:object_r:ebr_device:s0
 /dev/eemcs.* u:object_r:eemcs_device:s0
@@ -538,7 +546,6 @@
 /persist(/.*)?         u:object_r:persist_data_file:s0
 /dev/ttyACM0        u:object_r:ttyACM_device:s0
 /dev/hrm       u:object_r:hrm_device:s0
-/dev/hardwareinfo(/.*)?       u:object_r:hardwareinfo_device:s0
 
 #############################
 # sysfs files
@@ -620,6 +627,9 @@
 /system/bin/netdiag u:object_r:netdiag_exec:s0
 /system/bin/nvram_agent_binder u:object_r:nvram_agent_binder_exec:s0
 /system/bin/nvram_daemon u:object_r:nvram_daemon_exec:s0
+#gionee lizhi 20150612 add for nvram begin
+/system/bin/nvram_backup_binder u:object_r:nvram_backup_binder_exec:s0
+#gionee lizhi 20150612 add for nvram end
 /system/bin/orientationd u:object_r:orientationd_exec:s0
 /system/bin/permission_check u:object_r:permission_check_exec:s0
 /system/bin/poad u:object_r:poad_exec:s0
@@ -660,43 +670,25 @@
 /system/bin/starter u:object_r:starter_exec:s0
 /system/bin/stroke u:object_r:stroke_exec:s0
 /system/bin/istd8303 u:object_r:istd8303_exec:s0
-/system/bin/nvram_acc     u:object_r:nvram_acc_exec:s0
-/system/bin/nvram_proximity     u:object_r:nvram_proximity_exec:s0
+/system/bin/mmc3524xd u:object_r:mmc3524xd_exec:s0
+
 # Wallpaper file for smartbook
 /data/system/users/[0-9]+/smartbook_wallpaper	u:object_r:wallpaper_file:s0
 
-#SmartAlertLight
-/sys/class/leds/red/brightness				u:object_r:sysfs_wingtk_leds:s0
-/sys/devices/platform/leds-mt65xx/leds/red/brightness	u:object_r:sysfs_wingtk_leds:s0
-/sys/class/leds/green/brightness					u:object_r:sysfs_wingtk_leds:s0
-/sys/devices/platform/leds-mt65xx/leds/green/brightness	u:object_r:sysfs_wingtk_leds:s0
+# =========liuyb add for amigosu & tunman sepolicy begin=============
+# Gionee <Amigo_Su> <liuyb> add for amigosu begin
+/dev/socket/tunman  u:object_r:tunman_socket:s0
+/system/xbin/tunman u:object_r:tunman_exec:s0
+
+/dev/socket/amigosu  u:object_r:amigosu_socket:s0
+/system/xbin/amigosu u:object_r:dumpstate_exec:s0
+# Gionee <Amigo_Su> <liuyb> add for amigosu end
 
 
-/sys/class/leds/flashlight/brightness			u:object_r:sysfs_wingtk_leds:s0
-/sys/devices/platform/leds-mt65xx/leds/flashlight/brightness	u:object_r:sysfs_wingtk_leds:s0
+# Gionee zenggz add for CR01433838 begin
+/data/misc/gionee(/.*)?       u:object_r:gionee_data_file:s0
+# Gionee zenggz add for CR01433838 end
 
-/sys/class/leds/button-backlight/brightness                   u:object_r:sysfs_wingtk_leds:s0
-/sys/devices/platform/leds-mt65xx/leds/button-backlight/brightness    u:object_r:sysfs_wingtk_leds:s0
-# Start LVPCCR-6 Lenovo-sw caijh 2014.11.07 added,for theme file for other users's permission in unix stream rw through system_server
-# theme file for other users
-/data/system/theme(/.*)?   				                u:object_r:theme_file:s0
-/data/system/theme							u:object_r:theme_file:s0
-# End LVPCCR-6 Lenovo-sw caijh
-
-# Start LVPCCR-6 Lenovo-sw caijh 2014.11.07 added,for lock screen Wallpaper file for other users's permission in unix stream rw through WallpaperManagerService
-# lock screen Wallpaper file for other users
-/data/system/users/[0-9]+/lockScreenWallpaper				u:object_r:wallpaper_file:s0
-/data/system/users/[0-9]+/lockScreenWallpaper.byte			u:object_r:wallpaper_file:s0
-/data/system/users/[0-9]+/horizontal_lockScreenWallpaper.byte		u:object_r:wallpaper_file:s0
-# End LVPCCR-6 Lenovo-sw caijh
-
-
-#charging call state
-/sys/devices/platform/battery/Charging_CallState u:object_r:sysfs_charging_call_state:s0
-#line 1 "device/mediatek/common/sepolicy/lenovo/file_contexts"
-# Start PATCHROM-128 Lenovo-sw quebs2 2014.12.10 added,support APP's root channel usage
-/system/bin/nac_server  u:object_r:nac_server_exec:s0
-/data/local/root_channel(/.*)?  u:object_r:root_execute_file:s0
-/data/local/root_channel        u:object_r:root_execute_file:s0
-# End PATCHROM-128 Lenovo-sw quebs2
-
+# Gionee malp add 20150829 start
+/dev/DW9800AF(/.*)? u:object_r:DW9800AF_device:s0
+# Gionee malp add 20150829 end
