@@ -1,3 +1,2 @@
 PRODUCT_MAKEFILES := \
-	$(LOCAL_DIR)/vivoxl.mk \
-	$(LOCAL_DIR)/omni_vivoxl.mk
+    $(LOCAL_DIR)/device_vivoxl.mk
