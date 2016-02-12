@@ -1,3 +1,4 @@
+DEVICE_FOLDER := device/blu/vivoxl
 USE_CAMERA_STUB := true
 
 # inherit from the proprietary version
