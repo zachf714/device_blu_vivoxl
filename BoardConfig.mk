@@ -49,8 +49,8 @@ BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x03f88000 -
 TARGET_PREBUILT_KERNEL := device/blu/vivoxl/recovery/kernel
 BOARD_HAS_NO_SELECT_BUTTON := true
 #recovery
-TARGET_RECOVERY_INITRC := device/blu/vivoxl/recovery/init.mt6753.rc
-TARGET_RECOVERY_FSTAB := device/blu/vivoxl/recovery/recovery.fstab
+TARGET_RECOVERY_INITRC := device/blu/vivoxl/rootdir/init.recovery.mt6753.rc
+TARGET_RECOVERY_FSTAB := device/blu/vivoxl/rootdir/etc/recovery.fstab
 TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/devices/platform/leds-mt65xx/leds/lcd-backlight/brightness\"
 
 #system.prop

@@ -19,6 +19,6 @@ TARGET_SCREEN_WIDTH := 720
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := vivoxl
 PRODUCT_NAME := cm_vivoxl
-PRODUCT_BRAND := elephone
+PRODUCT_BRAND := BLU
 PRODUCT_MODEL := Vivo XL
 PRODUCT_MANUFACTURER := Blu

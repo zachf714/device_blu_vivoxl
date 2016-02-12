@@ -90,6 +90,10 @@ subsystem adf
 # kms driver for drm based gpu
 /dev/dri/*                0666   root       graphics
 
+#Gionee BSP1 ningyd 20150303 modify for CR01452914 immersion vibrate begin
+/dev/tspdrv               0660   system     system
+#Gionee BSP1 ningyd 20150303 modify for CR01452914 immersion vibrate end
+
 # these should not be world writable
 /dev/diag                 0660   radio      radio
 /dev/diag_arm9            0660   radio      radio
@@ -214,4 +218,3 @@ subsystem adf
 
 #MTK In-House TEE
 /dev/ttyACM0		  0660   radio	    radio
-
